@@ -1,0 +1,114 @@
+@media (min-width: $xl_min){
+	.header-height{
+		height: $header-height;
+	}
+	.pxl-header-transparent,
+	.pxl-header-transparent-sticky{
+		position: absolute;
+		left: 0;
+		right: 0;
+		z-index: 2;
+	}
+}
+
+#pxl-header{
+	@include transition(all 0.3s cubic-bezier(.3,.4,.5, 1) 0s);
+}
+  
+.header-type-df{
+	position: relative;
+	padding: 15px 0;
+	&.h-fixed{
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		background-color: #fff;
+		z-index: 999;
+		@include transition(.6s cubic-bezier(.3,.4,.5,1));
+		@include animation(0.95s ease 0s normal forwards 1 running headerSlideDown);
+		@include box-shadow(0 3px 18px rgba(#02154e, 0.09));
+	} 
+}
+
+.pxl-header-sticky {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: transparent;
+	z-index: 999;
+	opacity: 0;
+	@include transform(translateY(-100%));
+	@include transition(.6s cubic-bezier(0.43, 0.46, 0.64, 0.66) !important);
+	&.h-fixed {
+		-webkit-backdrop-filter: blur(0);
+    	backdrop-filter: blur(0);
+		@include transform(translateY(0%));
+		opacity: 1;
+	}
+	&.pxl-header-rotate-x{
+		@include transition(all .3s ease-out !important);
+		-webkit-transform: perspective(300px) rotateX(-90deg);
+    	transform: perspective(300px) rotateX(-90deg);
+    	-webkit-transform-origin: top;
+	    -khtml-transform-origin: top;
+	    -moz-transform-origin: top;
+	    -ms-transform-origin: top;
+	    -o-transform-origin: top;
+	    transform-origin: top;
+		&.h-fixed {
+			-webkit-transform: perspective(300px) rotateX(0deg);
+    		transform: perspective(300px) rotateX(0deg);
+		}
+	}
+	 
+}
+
+.pxl-header-main-sticky{ 
+	z-index: 1;
+	&.h-fixed{
+		position: fixed;
+        z-index: 999;
+        @include box-shadow(0 3px 18px rgba(#02154e, 0.09));
+        @include animation(0.45s ease-out headerSlideDown);
+	}
+
+}
+.pxl-header-transparent-sticky{
+    z-index: 1;
+    &.h-fixed {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        z-index: 99;
+        @include animation(0.5s ease-out headerSlideDown);
+    }
+}
+
+
+.pxl-header-fixed-top{
+	width: 100%;
+	position: fixed;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    box-sizing: border-box;
+    z-index: 99;
+    -webkit-transition: background 0.4s ease-in-out 0.3s;
+    transition: background 0s ease-in-out 0s;
+}
+
+.admin-bar{
+	.pxl-header-fixed-top{
+		top: 32px;
+		@media screen and (max-width: 782px) {
+			top: 46px;
+		}
+		@media screen and (max-width: 600px) {
+			top: 0;
+		}
+	}
+}
+

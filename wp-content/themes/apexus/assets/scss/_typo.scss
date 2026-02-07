@@ -1,0 +1,307 @@
+body { 
+    margin: 0;
+    font-family: $body_font_family;
+    font-size: $body_font_size;
+    color: $body_color;
+    line-height: $body_line_height; 
+    letter-spacing: $body_letter_spacing;  
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    font-weight: normal;
+    @media (max-width: $xs_max){
+        font-size: 15px;
+    }
+    &.overflow-x-clip{
+        overflow-x: clip;
+    }
+     
+    &::-webkit-scrollbar{
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-track{
+        border-radius: 0;
+        background-color: #fafafa;
+        @include box-shadow(inset 0 0 6px rgba(0, 0, 0, 0.2));
+    }
+    &::-webkit-scrollbar-thumb{
+        background: #c8c8c8;
+        border-radius: 7px;
+        border: 2px solid transparent;
+        background-clip: padding-box;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: #7d7d7d;
+        border: 0;
+    }
+   
+    &:before,
+    &:after{
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        @include transition(all .3s ease);
+    }
+    &:before{
+        bottom: 0;
+        right: 0;
+        background-color: rgba(#ffffff, 0.4);
+        z-index: 999999;
+        opacity: 0;
+        visibility: hidden;
+        cursor: progress;
+    }
+    &:after{
+        width: 0;
+        height: 3px;
+        background: rgba(#ffffff, 0.7);
+        z-index: 9999999;
+        opacity: 1;
+    }
+    &.loading{
+        &:before{
+            opacity: 1;
+            visibility: visible;
+        }
+        &:after{
+            @include animation(progress-loading 2s cubic-bezier(0.33, 0, 0.67, 0.99) forwards);
+        }
+    }
+    &.loaded{
+        &:after{
+            @include animation(progress-loaded .5s ease-out forwards);
+        }
+    }
+}
+a {
+    text-decoration: none;
+    @include transition(all .25s cubic-bezier(.645,.045,.355,1));
+}
+ 
+h1,h2,h3,h4,h5,h6 {
+    margin: 0 0 15px 0;
+    font-family: $heading_font_family;
+    color: $heading_color;
+    line-height: $heading_line_height; 
+    font-weight: $heading_font_weight; 
+    letter-spacing: $heading_letter_spacing; 
+    text-transform: $heading_text_transform;
+}
+.h1, .h2, .h3, .h4, .h5, .h6{
+    margin: 0;
+    font-family: $heading_font_family;
+    color: $heading_color;
+    line-height: $heading_line_height; 
+    font-weight: $heading_font_weight; 
+    letter-spacing: $heading_letter_spacing;
+}
+a:hover{
+    h1, h2, h3, h4, h5, h6,
+    .h1, .h2, .h3, .h4, .h4-1, .h5, .h6{
+        color: $link_color_hover;
+    }
+}
+
+h1, .h1, .size-h1{
+    font-size: $heading_font_size_h1;
+    @media (max-width: $xxl_max){
+        font-size: 60px;
+    }
+    @media (max-width: $lg_max){
+        font-size: calc(1.375rem + 1.5vw);
+    }
+    @media (max-width: $md_max){
+        font-size: 1.7rem;
+    }
+    @media (max-width: $sm_max){
+        font-size: 36px;
+    }
+}
+h2, .h2, .size-h2{
+    font-size: $heading_font_size_h2;
+    @media (max-width: $xxl_max){
+        font-size: 50px;
+    }
+    @media (max-width: $lg_max){
+        font-size: calc(1.325rem + .9vw);
+    }
+    @media (max-width: $md_max){
+        font-size: 1.5rem;
+    }
+    @media (max-width: $sm_max){
+        font-size: 22px;
+    }
+}
+h3, .h3, .size-h3{
+    font-size: $heading_font_size_h3;
+    @media (max-width: $lg_max){
+        font-size: calc(1.3rem + .6vw);;
+    }
+ 
+}
+h4, .h4, .size-h4{
+    font-size: $heading_font_size_h4;
+    @media (max-width: $lg_max){
+        font-size: calc(1.275rem + .3vw);
+    }
+}
+h5, .h5, .size-h5{
+    font-size: $heading_font_size_h5;
+}
+h6, .h6, .size-h6{
+    font-size: $heading_font_size_h6;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+  
+ul, ol{
+    list-style-position: inside;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 0;
+    ul, ol{
+        padding-left: 15px;
+        [dir="rtl"] &{
+            padding-left: 0;
+            padding-right: 15px;
+        }
+    }
+    &.list-unstyled,
+    &.unstyled{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        ul, ol{
+            list-style: none;
+        }   
+    }
+    &.horizontal{
+        display: flex;
+        flex-wrap: wrap;
+        margin: -5px;
+        > li{
+            padding: 5px;
+            flex: 0 0 auto;
+            width: auto;
+            max-width: 100%;
+        }
+    }
+} 
+table {
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid #e0e0e0;
+    border-spacing: 0;
+    @include border-radius(3px);
+    th, td{
+        padding: 8px;
+        border: 1px solid #e0e0e0;
+        border-top: 0;
+        border-left: 0;
+        text-align: start;
+        vertical-align: middle;
+        &:last-child{
+            border-right: 0;
+        }
+    }
+      
+    + * {
+        margin-top: 20px;
+    }
+    tbody tr:last-child {
+        th, td{
+            border-bottom: 0;
+        }
+    }
+}
+  
+img{
+    height: auto;
+    max-width: 100%;
+    vertical-align: top;
+    &.image-fit,
+    &.img-fit{
+        @include image-fit();
+    }
+
+    &.alignleft,
+    &.alignright{
+        &[alt="Image Alignment 150x150"]{
+            clear: both;
+        }
+    }
+}
+
+
+a{
+    color: $link_color;
+    text-decoration: none;
+    &:hover{
+        color: $link_color_hover;
+    }
+    &:hover,
+    &:active,
+    &:focus{
+        text-decoration: none;
+    }
+}
+p, ul, ol, dl, dt, dd, blockquote, address {
+    margin: 0 0 10px;
+}
+.p, p {
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
+.dropcap{
+    width: 60px;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin-right: 0.5rem;
+    color: $primary_color;
+    background-color: $primary_color;
+    border-radius: 6px;
+}
+blockquote{
+    padding: 24px;
+    margin: 15px 0;
+    background-color: $primary_color;
+    font-size: 16px;
+    line-height: 1.2;
+    color: $heading_color;
+    border-radius: 6px;
+    text-align: center;
+    overflow: hidden;
+     
+    &.has-text-align-right{
+        [dir="rtl"] &{         
+            text-align: left;
+        }
+    }
+    cite{
+        font-family: $heading_font_family;
+        font-size: 14px;
+        line-height: 26px;
+        font-weight: 600;
+        font-style: inherit;
+        background: transparent;
+        text-transform: uppercase;
+        color: $second_color;
+        position: relative;
+        display: block;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        margin-top: 20px;
+    }
+}
+ 

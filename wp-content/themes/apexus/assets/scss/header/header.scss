@@ -1,0 +1,18 @@
+@import 'desktop';
+@import 'mobile';
+
+.logo-default{
+	display: block;
+	&.logo-desktop{
+		img{
+			max-width: $logo_width;
+		}
+	}
+	&.logo-mobile{
+        padding-top: 20px;
+		padding-bottom: 20px;
+		img{
+			max-width: $logo_mobile_width;
+		}
+    }
+}

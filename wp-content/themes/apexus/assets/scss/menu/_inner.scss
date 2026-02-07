@@ -1,0 +1,52 @@
+.pxl-nav-menu-inner{
+	&.style-2{
+		ul{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			margin-left: -25px;
+			margin-right: -25px;
+			display: flex;
+			flex-wrap: wrap;
+			@media (max-width: $lg_max){
+				margin-left: -15px;
+				margin-right: -15px;
+			}
+			@media (max-width: $xs_max){
+                justify-content:center;
+            }
+			li{
+				position: relative;
+				padding: 0;
+			}
+			> li {
+				flex: 0 0 auto;
+				width: auto;
+				margin: 0 25px;
+				display: inline-flex;
+				@media (max-width: $lg_max){
+					margin: 0 15px;
+				}
+				> a{
+					text-transform: uppercase;
+					display: inline-block;
+					color: #7e7e7e;
+					font-size: 14px;
+					letter-spacing: 0.1em;
+					@media (max-width: $lg_max){
+						letter-spacing: 0;
+					}
+				}
+				&.active,
+				&.current-menu-item,
+				&.current-menu-ancestor,
+				&:hover{ 
+					> a,
+					> .main-menu-toggle{
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+}

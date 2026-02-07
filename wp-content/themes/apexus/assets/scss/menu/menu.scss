@@ -1,0 +1,14 @@
+$menu_item_space: 24px;
+$sub_menu_w: 250px;
+$menu_arrows_down: "\ea27";
+$menu_arrows_up: "\e99f";
+$menu_arrow_size: 12px;
+$menu_item_icon: "\e9a0";
+$menu_item_icon_rtl: "\e9a1";
+$submenu_radius: 6px;
+
+@import 'main';
+@import 'mega';
+@import 'mobile';
+@import 'inner';
+@import 'widescreen';

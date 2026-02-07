@@ -1,0 +1,215 @@
+<wpml-config>
+    <admin-texts>
+        <key name="pxl_theme_options">
+            <key name="events_slug" />
+            <key name="archive_custom_sub_title" />
+        </key>
+    </admin-texts> 
+    <elementor-widgets>
+        <widget name="pxl_accordion">
+        <fields>
+            <field>ac_items</field>
+        </fields>
+        <fields-in-item items_of="ac_items">
+            <field>ac_title</field>
+            <field>ac_content</field>
+        </fields-in-item>
+        </widget>
+        <widget name="pxl_button">
+        <fields>
+            <field>text</field>
+        </fields>
+        </widget>
+        <widget name="pxl_clients">
+        <fields>
+            <field>clients</field>
+        </fields>
+        <fields-in-item items_of="clients"/>
+        </widget>
+        <widget name="pxl_countdown">
+        <fields>
+            <field>time_to</field>
+        </fields>
+        </widget>
+        <widget name="pxl_download">
+        <fields>
+            <field>download</field>
+        </fields>
+        <fields-in-item items_of="download"/>
+        </widget>
+        <widget name="pxl_fancy_box">
+        <fields>
+            <field>title</field>
+            <field>desc</field>
+        </fields>
+        </widget>
+        <widget name="pxl_fancy_box_carousel">
+        <fields>
+            <field>boxs</field>
+        </fields>
+        <fields-in-item items_of="boxs"/>
+        </widget>
+        <widget name="pxl_galleries">
+        <fields>
+            <field>filter_custom_tags</field>
+            <field>grid_custom_columns</field>
+        </fields>
+        <fields-in-item items_of="filter_custom_tags">
+            <field>tag_item</field>
+            <field>image_position</field>
+        </fields-in-item>
+        <fields-in-item items_of="grid_custom_columns"/>
+        </widget>
+        <widget name="pxl_history_carousel">
+        <fields>
+            <field>content_list</field>
+        </fields>
+        <fields-in-item items_of="content_list"/>
+        </widget>
+        <widget name="pxl_heading">
+        <fields>
+            <field>title</field>
+            <field>text_list</field>
+        </fields>
+        <fields-in-item items_of="text_list"/>
+        </widget>
+        <widget name="pxl_icon_list">
+        <fields>
+            <field>icon_list</field>
+        </fields>
+        <fields-in-item items_of="icon_list">
+            <field>title</field>
+            <field>text</field>
+        </fields-in-item>
+        </widget>
+        <widget name="pxl_video_carousel">
+        <fields>
+            <field>content_list</field>
+        </fields>
+        <fields-in-item items_of="content_list"/>
+        </widget>
+        <widget name="pxl_text_editor">
+        <fields>
+            <field>text_editor</field>
+        </fields>
+        </widget>
+        <widget name="pxl_timetable">
+        <fields>
+            <field>tab_selected</field>
+            <field>tabs_list</field>
+        </fields>
+        <fields-in-item items_of="tabs_list"/>
+        </widget>
+        <widget name="pxl_testimonial_carousel">
+        <fields>
+            <field>content_list</field>
+        </fields>
+        <fields-in-item items_of="content_list"/>
+        </widget>
+        <widget name="pxl_team_carousel">
+        <fields>
+            <field>content_list</field>
+        </fields>
+        <fields-in-item items_of="content_list"/>
+        </widget>
+        <widget name="pxl_tabs_slip">
+        <fields>
+            <field>tabs</field>
+        </fields>
+        <fields-in-item items_of="tabs"/>
+        </widget>
+        <widget name="pxl_slider">
+        <fields>
+            <field>content_list</field>
+        </fields>
+        <fields-in-item items_of="content_list"/>
+        </widget>
+        <widget name="pxl_tabs">
+        <fields>
+            <field>tabs_list</field>
+        </fields>
+        <fields-in-item items_of="tabs_list"/>
+        </widget>
+        <widget name="pxl_programs_carousel">
+        <fields>
+            <field>content_list</field>
+        </fields>
+        <fields-in-item items_of="content_list"/>
+        </widget>
+        <widget name="pxl_search">
+        <fields>
+            <field>placeholder</field>
+        </fields>
+        </widget>
+        <widget name="pxl_post_grid">
+        <fields>
+            <field>filter_default_title</field>
+            <field>loadmore_text</field>
+        </fields>
+        </widget>
+        <widget name="pxl_post_carousel">
+        <fields>
+            <field>filter_default_title</field>
+        </fields>
+        </widget>
+        <widget name="pxl_image_carousel">
+        <fields>
+            <field>clients</field>
+        </fields>
+        <fields-in-item items_of="clients"/>
+        </widget>
+        <widget name="pxl_language_switcher">
+        <fields>
+            <field>menu_item</field>
+        </fields>
+        <fields-in-item items_of="menu_item"/>
+        </widget>
+        <widget name="pxl_logo_marquee">
+        <fields>
+            <field>marquee</field>
+            <field>marquee_2</field>
+            <field>slip_duration</field>
+        </fields>
+        <fields-in-item items_of="marquee"/>
+        <fields-in-item items_of="marquee_2"/>
+        </widget>
+        <widget name="pxl_gallery_carousel">
+        <fields-in-item items_of="custom_link_list"/>
+        </widget>
+    </elementor-widgets>
+    <language-switcher-settings>
+        <key name="icl_lang_sel_config">
+            <key name="font-current-normal">#777777</key>
+            <key name="font-current-hover">#111111</key>
+            <key name="background-current-normal">#ffffff</key>
+            <key name="background-current-hover">#eeeeee</key>
+            <key name="font-other-normal">#777777</key>
+            <key name="font-other-hover">#111111</key>
+            <key name="background-other-normal">#ffffff</key>
+            <key name="background-other-hover">#eeeeee</key>
+            <key name="border">#dedede</key>
+        </key>
+        <key name="icl_lang_sel_footer_config">
+            <key name="font-current-normal">#777777</key>
+            <key name="font-current-hover">#111111</key>
+            <key name="background-current-normal">#ffffff</key>
+            <key name="background-current-hover">#eeeeee</key>
+            <key name="font-other-normal">#777777</key>
+            <key name="font-other-hover">#111111</key>
+            <key name="background-other-normal">#ffffff</key>
+            <key name="background-other-hover">#eeeeee</key>
+            <key name="border">#dedede</key>
+        </key>    
+        <key name="icl_language_switcher_sidebar">0</key>  
+        <key name="icl_widget_title_show">0</key>
+        <key name="icl_lang_sel_type">dropdown</key>
+        <key name="icl_lso_link_empty">0</key>
+        <key name="icl_lso_flags">0</key>
+        <key name="icl_lso_native_lang">1</key>
+        <key name="icl_lso_display_lang">1</key>
+        <key name="icl_lang_sel_footer">0</key>
+        <key name="icl_post_availability">0</key>
+        <key name="icl_post_availability_position">below</key>
+        <key name="icl_post_availability_text">This post is also available in: %s</key>    
+    </language-switcher-settings>
+</wpml-config>

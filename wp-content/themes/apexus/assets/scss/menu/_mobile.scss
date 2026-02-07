@@ -1,0 +1,117 @@
+.pxl-nav-menu-mobile{
+	ul,ol{
+		list-style: none;
+	    padding: 0;
+	    margin: 0;
+	    li{
+	    	position: relative;
+    		padding: 0;
+	    }
+	} 
+} 
+ 
+.pxl-mobile-menu{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+	> li{
+		color: $mobile_menu_regular;
+		position: relative;
+		>a{
+			padding: 10px 0;
+			color: $mobile_menu_regular;
+			font-family: $mobile_menu_font_family;
+			font-size: $mobile_menu_font_size;
+			font-weight: $mobile_menu_font_weight;
+			display: inline-block;
+			text-transform: $mobile_menu_text_transform;
+			background-color: $mobile_menu_item_bg;
+			-webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+		}
+	}
+	.menu-item:hover,
+	.menu-item:active,
+	.current-menu-item,
+	.current-menu-ancestor{
+		> a{
+			color: $primary_color;
+			background-color: $mobile_menu_item_bg_hover;
+		}
+	}
+	.menu-item:active{
+		color: $primary_color;
+		> a{
+			color: $primary_color;
+			background-color: $mobile_menu_item_bg_hover;
+		}
+	}
+	.sub-menu{
+		display: none;
+		list-style: none;
+		.menu-item{
+			position: relative;
+			color: $mobile_submenu_regular;
+			>a{
+				padding: 5px 15px;
+				display: inline-block;
+				color: $mobile_submenu_regular;
+				font-size: $mobile_submenu_font_size;
+				font-weight: $mobile_submenu_font_weight;
+				background-color: $mobile_submenu_item_bg;
+				font-family: $mobile_submenu_font_family;
+				text-transform: $mobile_submenu_text_transform;
+				position: relative; 
+				-webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+			}
+		} 
+		.menu-item:hover,
+		.current-menu-item,
+		.current-menu-ancestor{
+			color: $mobile_submenu_hover;
+			> a{
+				color: $primary_color;
+				background-color: $mobile_submenu_item_bg_hover;
+			}
+		} 
+		.menu-item:active{
+			color: $mobile_submenu_active;
+			> a{
+				color: $mobile_submenu_active;
+				background-color: $mobile_submenu_item_bg_hover;
+			}
+		}
+		.pxl-heading-wrap{
+			display: none;
+		}
+		 
+	}
+	.main-menu-toggle {
+        cursor: pointer;
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        font-size: 18px;
+        position: absolute;
+        right: -6px;
+        text-align: center;
+        top: 13px;
+        background-color: transparent;
+        -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+        @include border-radius(4px 4px 0 4px);
+        @include transition(all 300ms linear 0ms);
+        &:before {
+        	content: "\e973";
+            font-family: $pxli_font;
+        }
+		&.open:before{
+	    	content: "\e973";
+            font-family: $pxli_font;
+	    }
+    }
+    .sub-menu{
+    	.main-menu-toggle {
+    		top: 5px;
+    	}
+    }
+}

@@ -1,0 +1,35 @@
+.pxl-archive-post{
+	&:not(.sticky){
+		.pxli-thumbtack{
+			display: none;
+		}
+	}
+}
+body:not(.theme-core){
+	.post-tags-share{
+		justify-content: flex-start;
+	}
+	.single-next-prev-nav{
+		.nav-label-wrap{
+			margin-bottom: 0;
+		}
+		.nav-title-wrap{
+			display: none;
+		}
+	}
+	th{
+		font-weight: 500;
+	}
+}
+ 
+.post-password-form{
+	position: relative;
+	input[type="submit"]{
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+}
+.pxl-sidebar-area .wp-block-latest-comments li {
+    margin-bottom: 13px;
+}

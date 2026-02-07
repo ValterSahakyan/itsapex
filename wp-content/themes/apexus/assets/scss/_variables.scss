@@ -1,0 +1,93 @@
+$grotesk_font: "Outfit";
+$mono_font: "Outfit";
+
+$pxli_font: "pxli";
+$primary_bg_dark: #c4281e;
+$success: #27a974;
+$success_bg_subtle: #d4eee3;
+$success_bg_dark: #1ea36d;
+$info: #106BDA;
+$info_bg_subtle: #cfe1f8;
+$info_bg_dark: #0b63d0;
+$warning: #ffc107;
+$warning_bg_subtle: #fff3cd;
+$warning_bg_dark: #f0b503;
+$danger: #CE3426;
+$danger_bg_subtle: #ffe2e0;
+$danger_bg_dark: #cb3022;
+$light: #f4f5f7;
+$dark: #000000;
+$cyan: #04765f;
+$cyan_bg_subtle: #cdf1e9;
+$cyan_bg_dark: #036f59;
+$purple: #6363f5;
+$purple_bg_subtle: #dedeff;
+$purple_bg_dark: #5b5bed;
+$primary_rgb: rgba(205, 44, 34, 1);
+$secondary_rgb: rgba(195, 210, 222, 1);
+$success_rgb: rgba(39, 169, 116, 1);
+$info_rgb: rgba(16, 107, 218, 1);
+$warning_rgb: rgba(255, 193, 7, 1);
+$danger_rgb: rgba(206, 52, 38, 1);
+$cyan_rgb: rgba(4, 118, 95, 1);
+$purple_rgb: rgba(99, 99, 245, 1);
+$light_rgb: rgba(248, 249, 250, 1);
+$dark_rgb: rgba(14, 30, 43, 1);
+$error_color: #d62a28;
+$notice_color: #cf8207;
+
+$label_color: var(--heading-color);
+$white: #fff;
+$red: #ff0000;
+$gray: #707070;
+$black: #000000;
+$star_color: #ffb717;
+
+$facebook_color:     #3b5ea1;
+$google_color:       #e24d43;
+$twitter_color:      #2bb3fa;
+$youtube_color:      #df2926;
+$rss_color:          #ffa500;
+$skype_color:        #0ebaee;
+$yahoo_color:        #690a7b;
+$dribbble_color:     #ff70b7;
+$flickr_color:       #ff0084;
+$linkedin_color:     #087ec0;
+$vimeo_color:        #27bcf1;
+$pinterest_color:    #ee2c34;
+$instagram_color:    #db944c;
+$behance_color:      #1879fd;
+$tumblr_color:       #426d9b;
+$tripadvisor_color:  #00aa6c;
+
+ 
+$grid_gutters: 30px;
+ 
+$container_width: 1200px;
+
+$xs_screen: 480px;
+
+$xs_max: 575px;
+$sm_max: 767px;
+$md_max: 991px;
+$lg_max: 1199px;
+$xl_max: 1399px;
+$xxl_max: 1599px;
+
+$xs_min: 1px;
+$sm_min: 576px;
+$md_min: 768px;
+$lg_min: 992px;
+$xl_min: 1200px;
+$xxl_min: 1600px;
+//$xxxl_min: 1600px;
+
+$desktop_screen: 1200px;
+
+/* @media (min-width: $xxxl_min) {
+	.d-xxxl-block{
+		display: block;
+	}
+} */
+
+$cubic: cubic-bezier(0.4,0.5,0.6,0.7);

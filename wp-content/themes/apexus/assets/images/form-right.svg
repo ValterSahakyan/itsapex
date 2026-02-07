@@ -1,0 +1,31 @@
+<svg width="730" height="540" viewBox="0 0 730 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_iii_2018_767)">
+<path d="M730 12C730 5.37258 724.627 0 718 0H403.672C399.523 0 395.668 2.1429 393.479 5.66672L368.521 45.8333C366.332 49.3571 362.477 51.5 358.328 51.5H12C5.37262 51.5 0 56.8726 0 63.5V528C0 534.627 5.37256 540 12 540H718C724.627 540 730 534.627 730 528V12Z" fill="#0A0A0A"/>
+<path d="M730 12C730 5.37258 724.627 0 718 0H403.672C399.523 0 395.668 2.1429 393.479 5.66672L368.521 45.8333C366.332 49.3571 362.477 51.5 358.328 51.5H12C5.37262 51.5 0 56.8726 0 63.5V528C0 534.627 5.37256 540 12 540H718C724.627 540 730 534.627 730 528V12Z" fill="url(#paint0_radial_2018_767)" fill-opacity="0.1"/>
+</g>
+<defs>
+<filter id="filter0_iii_2018_767" x="0" y="0" width="730" height="540" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="-3"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.0313726 0 0 0 0 0.0313726 0 0 0 0 0.0313726 0 0 0 1 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_2018_767"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="1"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0"/>
+<feBlend mode="normal" in2="effect1_innerShadow_2018_767" result="effect2_innerShadow_2018_767"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="-2"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.627451 0 0 0 0 0.627451 0 0 0 0 0.627451 0 0 0 0.2 0"/>
+<feBlend mode="normal" in2="effect2_innerShadow_2018_767" result="effect3_innerShadow_2018_767"/>
+</filter>
+<radialGradient id="paint0_radial_2018_767" cx="0" cy="0" r="1" gradientTransform="matrix(-397.899 303.333 20.0431 350.352 551.025 -58.3334)" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg>

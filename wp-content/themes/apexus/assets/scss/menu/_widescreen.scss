@@ -1,0 +1,116 @@
+@media (min-width: $xl_min){
+	.pxl-canvas-menu{
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		ul, ol{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		> li {
+			
+			position: relative;
+			>a{
+				padding: 10px 0;
+				font-size: 40px;
+				font-family: $heading_font_family; 
+				letter-spacing: 0.02em;
+				font-weight: 700;
+				position: relative;
+				color: $heading_color;
+				@media (max-width: $xxl_max){
+		            font-size: 32px;
+		        }
+				.pxl-menu-title{
+					position: relative;
+					&:after{
+						content: "";
+						width: 0;
+						height: 1px;
+						background-color: $heading_color;
+						position: absolute;
+						left: 0;
+						bottom: 0;
+						@include transition(all .3s ease);
+					}
+				}
+				&:active,
+				&:hover{
+					.pxl-menu-title{
+						&:after{
+							width: 100%;
+						}
+					}
+				}
+			}
+			&.current-menu-parent, 
+			&.current-menu-ancestor{
+				>a{
+					color: $second_color;
+					.pxl-menu-title{
+						&:after{
+							background-color: $second_color;
+						}
+					}
+				}
+			}
+		}
+		.sub-menu{
+			display: none;
+			list-style: none;
+			padding: 8px 0 18px 3px;
+			.menu-item{
+				position: relative;
+				color: $heading_color;
+				>a{
+					padding: 2px 15px;
+					display: inline-block;
+					color: $heading_color;
+					font-size: 18px !important;
+					position: relative;
+					&:before {
+					    position: absolute;
+					    content: "";
+					    height: 5px;
+					    width: 5px;
+					    top: 50%;
+					    left: 0;
+					    background-color: $second_color;
+					    margin-top: -2.5px;
+					    border-radius: 50%;
+					}
+				}
+			} 
+			.menu-item:hover,
+			.menu-item:active,
+			.current-menu-item,
+			.current-menu-ancestor{
+				color: $second_color;
+				> a{
+					color: $second_color;
+				}
+			} 
+			  
+		}
+		.pxl-mega-menu{
+			@media (min-width: $xl_min){
+				width: auto;	
+				@include box-shadow(none);
+				@include transform(translate(0, 0) !important);
+			}
+			.elementor-section{
+				padding: 0;
+				.elementor-column{
+					width: 100% !important;
+					>.elementor-element-populated{
+						padding: 0 !important;
+					}
+				}
+			}
+			.hide-in-canvas-menu{
+				display: none;
+			}
+		}
+	}
+}

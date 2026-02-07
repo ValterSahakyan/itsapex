@@ -1,0 +1,66 @@
+li.pxl-megamenu{
+	position: static;
+}
+.pxl-mega-menu{
+	max-width: var(--megamenu-max-width);
+	@media (min-width: $xl_min){
+		left: 50% !important;
+		padding: 0;
+		overflow: hidden;
+		border-radius: 8px;
+		@include box-shadow(0px 10px 20px 0px rgba(27, 26, 26, 0.3));
+		@include transform(translate(-50%, 20px) !important);
+	}
+	@media (max-width: $lg_max){
+		.elementor-section{
+			background-image: none !important;
+			background-color: transparent !important;
+		}
+		.elementor-background-overlay{
+			background-image: none !important;
+			background-color: transparent !important;
+		}
+	}
+	.pxl-heading-wrap{
+		.heading-title {
+			display: inline-flex;	
+		}
+	}
+} 
+
+.pxl-primary-menu li:hover > .sub-menu.pxl-mega-menu{
+	@include transform(translate(-50%, 0) !important);
+}
+.pxl-primary-menu .sub-menu.pxl-mega-menu{
+    width: 100%;
+    background-color: #fff;
+}
+.sub-menu.pxl-mega-menu{
+    width: 100%;
+    .elementor-container .elementor-container{
+    	max-width: 100% !important;
+    }
+}
+
+@media (min-width: $xl_min){
+	.header-main-menu{
+		.sub-menu.pxl-mega-menu{
+			padding-left: 35px;
+			padding-right: 35px;
+		}
+	}
+	.pxl-primary-menu .sub-menu.pxl-mega-menu a:not(.pxl-btn){
+		border-bottom: 0;
+		overflow: visible;
+		&:before{
+			display: none;
+		}
+		&:hover{
+			background-color: transparent;
+		}
+	}
+	.pxl-primary-menu .sub-menu.pxl-mega-menu .current-menu-item > a:not(.pxl-btn), 
+	.pxl-primary-menu .sub-menu.pxl-mega-menu .current-menu-ancestor > a:not(.pxl-btn){
+		background-color: transparent;
+	}
+} 

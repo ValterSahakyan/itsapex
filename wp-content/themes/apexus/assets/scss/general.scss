@@ -1,0 +1,59 @@
+.pxl-loader {
+    background: #fff;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    z-index: 999999;
+    top: 0;
+    left: 0;
+    @include transition(all 1s ease);
+    &.style-1{
+        .loading-spinner {
+            margin: -45px auto 0 auto;
+            width: 512px;
+            height: 512px;
+            top: 50%;
+            transform: translateY(-50%);
+            object-fit: cover;
+            position: relative;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            @media (max-width: $sm_max) {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    }
+    &.style-2{
+        background-color: #0a0a0a;
+        .loading-text {
+            width: 100%;
+            height: 100%;
+            line-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            span {
+                display: inline-block;
+                margin: 0 5px;
+                color: #fff;
+                font-family: $heading_font_family;
+                @for $i from 0 through 6 {
+                    &:nth-child(#{$i + 1}) {
+                    filter: blur(0px);
+                    animation: blur-text 1.5s #{($i / 5)}s infinite linear alternate;
+                    }
+                }
+            }
+        }
+
+        @keyframes blur-text {
+            0% {filter: blur(0px);}
+            100% {filter: blur(4px);}
+        }
+    }
+} 
+
+
+

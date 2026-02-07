@@ -1,0 +1,94 @@
+.pxl-page{
+    position: relative;
+    overflow-x: clip;
+}
+
+.pxl-main:not(.page-builder-el) {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+body.blog,
+body.single-post,
+body.search-results{
+    .pxl-main{
+        padding-top: 120px;
+        padding-bottom: 120px;
+        @media (max-width: $lg_max) {
+            padding-top: 110px;
+            padding-bottom: 110px;
+        }
+        @media (max-width: $sm_max) {
+            padding-top: 90px;
+            padding-bottom: 90px;
+        }
+        @media (max-width: $xs_max) {
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+    }
+} 
+body.archive{
+    .pxl-main{
+        padding-top: 120px;
+        padding-bottom: 120px;
+        @media (max-width: $md_max) {
+            padding-top: 110px;
+            padding-bottom: 110px;
+        }
+        @media (max-width: $sm_max) {
+            padding-top: 90px;
+            padding-bottom: 90px;
+        }
+        @media (max-width: $xs_max) {
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+    }
+}
+
+
+body.side-panel-open.pos-full{
+    &::-webkit-scrollbar{
+        height: 0;
+        width: 0;
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-track{
+        border-radius: 0;
+    }
+    &::-webkit-scrollbar-thumb{
+        border-radius: 0;
+        background-color: transparent;
+    }
+}
+ 
+
+.pxl-sidebar-area{
+    @media (max-width: $md_max){
+        margin-top: 80px;
+    }
+    @media (max-width: $sm_max){
+        margin-top: 80px;
+    }
+}
+.pxl-entry-content{
+    @include d-flex();
+    >div{
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        flex-shrink: 0;
+    }
+}
+ 
+.pxl-row-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+ 

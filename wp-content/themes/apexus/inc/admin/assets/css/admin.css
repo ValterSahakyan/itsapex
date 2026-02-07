@@ -1,0 +1,120 @@
+.redux-container{
+	overflow: visible!important;
+}
+.postbox-container .redux-container .redux-field-container{
+    padding: 10px 0 !important;
+}
+.redux-notice-field{
+    background: #32373c !important;
+    color: #fff;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+.redux-notice-field .redux-info-desc b{
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.field-label-child.redux-notice-field{
+    background: #dfdfdf !important;
+    color: #111;
+}
+.field-label-child.redux-notice-field .redux-info-desc{
+    font-size: 14px;
+}
+.redux-container .redux-main .form-table tr.field-parent{
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 0;
+}
+.redux-container .redux-main .form-table tr.field-parent.first-parent{
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.redux-container .redux-main .form-table tr.field-child{
+    border-bottom: 0;
+}
+.redux-container .redux-main .form-table tr.field-child.last-child{
+    border-bottom: 1px solid #e7e7e7;
+}
+.redux-container .redux-main .form-table tr.pxl-heading-customize{
+    display: none !important;
+}
+.icons-selector .fip-icons-container{
+	font-size: 20px;
+}
+.icons-selector .selected-icon i{
+    font-size: 28px;
+    line-height: 30px;
+    display: inline-block;
+}
+.author-image-wrap{
+	padding: 10px 0;
+}
+.author-image-wrap label{
+	font-weight: 700;
+    margin-bottom: 5px;
+    display: block;
+}
+.author-image-wrap img{
+	width: 90px;
+	margin-bottom: 10px;
+}
+.pxl-btn{
+	position: relative;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 24px;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    background-color: #906e49;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    vertical-align: top;
+    border: 0 solid #906e49;
+    text-align: center;
+    text-decoration: none;
+    justify-content: center;
+    -webkit-box-shadow: none;
+    -khtml-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-transition: all 300ms linear 0s;
+    -khtml-transition: all 300ms linear 0s;
+    -moz-transition: all 300ms linear 0s;
+    -ms-transition: all 300ms linear 0s;
+    -o-transition: all 300ms linear 0s;
+    transition: all 300ms linear 0s;
+}
+.pxl-btn:hover,
+.pxl-btn:active,
+.pxl-btn:focus{
+	color: #ffffff;
+    outline: medium none;
+    text-decoration: none;
+    background-color: #313131;
+    border-color: #313131;
+}
+.redux-field-meta-hidden{
+    display: none;
+}
+.editor-email-template .redux-field iframe{
+    height: 350px !important;
+} 
+.customize-pane-parent .dashicons, .customize-pane-parent .dashicons-before:before{
+    width: auto;
+    height: auto;
+    font-size: 14px;
+    vertical-align: middle;
+}

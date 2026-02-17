@@ -9,6 +9,29 @@
     var $form;
     var VariationFormObj = false;
 
+    function apexus_is_safe_navigation_url(url) {
+        if (!url || typeof url !== 'string') {
+            return false;
+        }
+
+        var trimmed = url.trim();
+        if (!trimmed) {
+            return false;
+        }
+
+        // Allow in-site relative navigation and http(s) only.
+        if (trimmed.charAt(0) === '/' || trimmed.charAt(0) === '#' || trimmed.charAt(0) === '?') {
+            return true;
+        }
+
+        try {
+            var parsed = new URL(trimmed, window.location.origin);
+            return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+        } catch (e) {
+            return false;
+        }
+    }
+
     $( document ).ready( function() {
         window_width = $(window).outerWidth();
         apexus_events_handler();
@@ -858,7 +881,7 @@
                     return;
                 }
 
-                if ( response.error && response.product_url ) {
+                if ( response.error && response.product_url && apexus_is_safe_navigation_url(response.product_url) ) {
                     window.location = response.product_url;
                     return;
                 }
@@ -866,13 +889,13 @@
                 // Redirect to checkout for Buy Now button.
                 var redirect = $this_button.data( 'redirect' );
 
-                if ( redirect && '' !== redirect ) {
+                if ( redirect && '' !== redirect && apexus_is_safe_navigation_url(redirect) ) {
                     window.location = redirect;
                     return;
                 }
 
                 // Redirect to cart option.
-                if ( wc_add_to_cart_params.cart_redirect_after_add === 'yes' ) {
+                if ( wc_add_to_cart_params.cart_redirect_after_add === 'yes' && apexus_is_safe_navigation_url(wc_add_to_cart_params.cart_url) ) {
                     window.location = wc_add_to_cart_params.cart_url;
                     return;
                 }
@@ -1098,9 +1121,9 @@
     }
     
     ///
-    $('.product-cat-dropdown').on('change', function() {
+	$('.product-cat-dropdown').on('change', function() {
 		var url = $(this).val();
-		if (url) {
+		if (url && apexus_is_safe_navigation_url(url)) {
 			window.location.href = url;
 		}
 	});

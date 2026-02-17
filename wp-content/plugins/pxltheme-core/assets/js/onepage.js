@@ -5,6 +5,29 @@
  */
 (function ($) {
     "use strict";
+
+    function pxl_is_safe_navigation_url(url) {
+        if (!url || typeof url !== 'string') {
+            return false;
+        }
+
+        var trimmed = url.trim();
+        if (!trimmed) {
+            return false;
+        }
+
+        if (trimmed.charAt(0) === '/' || trimmed.charAt(0) === '#' || trimmed.charAt(0) === '?') {
+            return true;
+        }
+
+        try {
+            var parsed = new URL(trimmed, window.location.origin);
+            return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+        } catch (e) {
+            return false;
+        }
+    }
+
     if (typeof(one_page_options) != "undefined") {
         one_page_options.speed = parseInt(one_page_options.speed);
         $('.is-one-page').on('click', function (e) {
@@ -27,7 +50,9 @@
                 $('html, body').stop().animate({ scrollTop: _target.offset().top - _offset }, one_page_options.speed);   
                 return false;
             } else {
-                window.location.href = _link;
+                if (pxl_is_safe_navigation_url(_link)) {
+                    window.location.href = _link;
+                }
             }
             return false;
         });

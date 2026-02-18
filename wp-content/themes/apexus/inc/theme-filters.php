@@ -437,7 +437,9 @@ if(!function_exists('apexus_archive_count_span')){
 }
 
 function apexus_add_sub_menu_toggle( $output, $item, $depth, $args ) {
-	 
+	if (!is_array($classes)) {
+		$classes = preg_split('/\s+/', (string) $classes, -1, PREG_SPLIT_NO_EMPTY);
+	}
 	if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 		$output .= '<span class="main-menu-toggle"></span>';
 	}

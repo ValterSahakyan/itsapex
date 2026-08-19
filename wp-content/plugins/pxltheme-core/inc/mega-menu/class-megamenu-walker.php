@@ -102,7 +102,16 @@ class PXL_Mega_Menu_Walker extends Walker_Nav_Menu
             else
                 $args->link_before = $args->old_link_before;
         }
-
+ 
+        if (!empty($item->pxl_svg)) {
+            if ( $item->pxl_svg ) {
+                $item->classes[] = 'has-icon';
+                $svg = file_get_contents( get_attached_file( $item->pxl_svg ) );
+                $args->old_link_before = $args->link_before;
+                $args->link_before = '<span class="svg-icon">'.$svg.'</span>' . $args->link_before;
+            }
+        }
+        
         $item->pxl_icon_position = 'left';
         if (!empty($item->pxl_icon)) {
             if ('left' === $item->pxl_icon_position) {

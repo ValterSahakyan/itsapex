@@ -1,5 +1,8 @@
 <?php
 
+defined('ABSPATH') || exit;
+
+
 /**
  * Class MC4WP_Procaptcha
  *
@@ -179,10 +182,9 @@ class MC4WP_Procaptcha
      */
     protected function is_human_made_request()
     {
-        $token = $_POST[self::FORM_FIELD_NAME] ?? '';
-        $token = true === is_string($token) ?
-            $token :
-            '';
+        // phpcs:ignore WordPress.Security.NonceVerification -- explicitly not using a nonce here
+        $token = wp_unslash($_POST[self::FORM_FIELD_NAME] ?? '');
+        $token = true === is_string($token) ? $token : '';
 
         // bail early if the token is empty.
         if ('' === $token) {
@@ -210,7 +212,7 @@ class MC4WP_Procaptcha
         // Check if request failed, either locally or remotely
         if (true === is_wp_error($response) || wp_remote_retrieve_response_code($response) >= 400) {
             /** @var MC4WP_Debug_Log */
-            $logger = mc4wp('log');
+            $logger = mc4wp_get_service('log');
             $logger->error(sprintf('ProCaptcha request error: %d %s - %s', wp_remote_retrieve_response_code($response), wp_remote_retrieve_response_message($response), wp_remote_retrieve_body($response)));
 
             // the check failed, but we don't want to break the form in case of Prosopo having server issues
@@ -218,12 +220,12 @@ class MC4WP_Procaptcha
             return true;
         }
 
-        $body        = wp_remote_retrieve_body($response);
-        $data        = json_decode($body, true);
+        $body = wp_remote_retrieve_body($response);
+        $data = json_decode($body, true);
 
         // check if Prosopo API returned a correct JSON response
         if ($data === null || !is_array($data)) {
-            $logger = mc4wp('log');
+            $logger = mc4wp_get_service('log');
             $logger->error(sprintf('ProCaptcha returned a non-JSON response: %s', $body));
             return true;
         }

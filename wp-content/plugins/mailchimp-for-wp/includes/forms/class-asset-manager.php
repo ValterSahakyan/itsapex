@@ -1,5 +1,8 @@
 <?php
 
+defined('ABSPATH') || exit;
+
+
 /**
 * This class takes care of all form assets related functionality
  *
@@ -21,17 +24,19 @@ class MC4WP_Form_Asset_Manager
     /**
      * Add hooks
      */
-    public function add_hooks()
+    public function add_hooks(): void
     {
         add_action('init', [ $this, 'register_scripts' ]);
         add_action('wp_enqueue_scripts', [ $this, 'load_stylesheets' ]);
         add_action('wp_footer', [ $this, 'load_scripts' ]);
         add_action('mc4wp_output_form', [ $this, 'before_output_form' ]);
-        add_action('script_loader_tag', [ $this, 'add_defer_attribute' ], 10, 2);
+        add_filter('script_loader_tag', [ $this, 'add_defer_attribute' ], 10, 2);
     }
 
     /**
      * Register scripts to be enqueued later.
+     *
+     * @return void
      */
     public function register_scripts()
     {
@@ -41,7 +46,6 @@ class MC4WP_Form_Asset_Manager
 
     /**
      * @param string $stylesheet
-     *
      * @return bool
      */
     public function is_registered_stylesheet($stylesheet)
@@ -122,7 +126,7 @@ class MC4WP_Form_Asset_Manager
     /**
      * Get data object for client-side use for after a form is submitted over HTTP POST (not AJAX).
      *
-     * @return array
+     * @return null|array
      */
     public function get_submitted_form_data()
     {
@@ -201,6 +205,7 @@ class MC4WP_Form_Asset_Manager
         if ($this->load_typo_checker) {
             wp_enqueue_script('mc4wp-email-typo-checker');
             wp_localize_script('mc4wp-email-typo-checker', 'mc4wp_email_typo_checker', [
+                // translators: %s is the suggested correct email address.
                 'suggestion_text' => __('Did you mean %s?', 'mailchimp-for-wp'),
                 'domains'         => apply_filters('mc4wp_email_typo_checker_domains', [
                     'gmail.com',
@@ -227,7 +232,11 @@ class MC4WP_Form_Asset_Manager
         $submitted_form_data = $this->get_submitted_form_data();
         if ($submitted_form_data !== null) {
             wp_enqueue_script('mc4wp-forms-submitted', mc4wp_plugin_url('assets/js/forms-submitted.js'), [ 'mc4wp-forms-api' ], MC4WP_VERSION, true);
-            wp_localize_script('mc4wp-forms-submitted', 'mc4wp_submitted_form', $submitted_form_data);
+            wp_add_inline_script(
+                'mc4wp-forms-submitted',
+                'var mc4wp_submitted_form = ' . wp_json_encode($submitted_form_data) . ';',
+                'before'
+            );
         }
 
         // print inline scripts

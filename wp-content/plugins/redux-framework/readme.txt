@@ -1,10 +1,10 @@
 === Redux Framework ===
 Contributors: kprovance, dovyp, redux
 Tags: admin, options, theme options, plugin options, options framework
-Requires at least: 5.0
+Requires at least: 5.3
 Requires PHP: 7.4
-Tested up to: 6.9
-Stable tag: 4.5.10
+Tested up to: 7.1
+Stable tag: 4.5.13
 License: GPL-3.0+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -122,20 +122,30 @@ NOTE: Redux is not intended to be used on its own. It requires a config file pro
 
 == Changelog ==
 
-= 4.5.10
+= 4.5.13 =
+* Fix: Reported privilege escalation vulnerability in `users` extension. Thanks, Jakub Herman.
+* Updated: "Modern" added to theme colors for WP 7.0.
+* Updated: Improved RTL.CSS. Thanks, @Mr-Alidoosti.
+* Release date: June 22, 2026
+
+= 4.5.11 =
+* Updated: Adjust to WordPress 7.0 Interface changes.
+* Release date: March 23, 2026
+
+= 4.5.10 =
 * Fixed: Tighten security in `import_export`, `custom_fonts`, `color_scheme`, and Google Font updating.
 * Fixed: `box_shadow` slider not updating value in real-time.
 * Fixed: Missing translations. Thanks, @DAnn2012.
 * Release date: January 07, 2026
 
-= 4.5.9
+= 4.5.9 =
 * Fix: Deprecation warning in `get_wordpress_data()` function.
 * Modified: Compliance with new PCP criteria.
 * Improved: Tighter security for shortcode extension.
 * Updated: parsedown.php for PHP 8.5.
 * Release date: November 24, 2025
 
-= 4.5.8
+= 4.5.8 =
 * Fix: Reported XSS vulnerability in the shortcode extension.
 * Fix: #4074 - Gallery field won't load on screen refresh.
 * Fix: Prevent fatal error for improperly coded CPTs with metaboxes.

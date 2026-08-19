@@ -298,3 +298,15 @@ body .wpb_pxl_bootstrap_section.vc_shortcodes_container > .wpb_element_wrapper >
     opacity: 0.5;
     cursor: not-allowed;
 }
+.menu-item-pxl-svg-icon{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+.pxl-svg-preview{
+    display: inline-flex;
+}
+.pxl-svg-preview svg{
+    width: 24px;
+    height: auto;
+}

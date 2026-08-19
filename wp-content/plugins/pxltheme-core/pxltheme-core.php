@@ -221,24 +221,29 @@ class Pxltheme_Core
             wp_register_script('swiper', PXL_URL . 'assets/js/libs/swiper.min.js', [], '5.3.6');
         }*/
         $swiper_version = apply_filters( 'pxl-swiper-version-active', '5.3.6' );
-
-        switch ($swiper_version) {
-            case '8.4.5':
-                wp_register_style('swiper', PXL_URL . 'assets/js/libs/swiper/v8/css/swiper.min.css', [], '8.4.5');
-                wp_register_script('swiper', PXL_URL . 'assets/js/libs/swiper/v8/swiper.min.js', [], '8.4.5');
-                break;
-            case '10.3.0':
-                wp_register_style('swiper', PXL_URL . 'assets/js/libs/swiper/v10/css/swiper.min.css', [], '10.3.0');
-                wp_register_script('swiper', PXL_URL . 'assets/js/libs/swiper/v10/swiper.min.js', [], '10.3.0');
-                break;
-            case '11.0.6':
-                wp_register_style('swiper', PXL_URL . 'assets/js/libs/swiper/v11/css/swiper.min.css', [], '11.0.6');
-                wp_register_script('swiper', PXL_URL . 'assets/js/libs/swiper/v11/swiper.min.js', [], '11.0.6');
-                break;
-            default:
-                wp_register_style('swiper', PXL_URL . 'assets/js/libs/swiper/css/swiper.min.css', [], '5.3.6');
-                wp_register_script('swiper', PXL_URL . 'assets/js/libs/swiper/swiper.min.js', [], '5.3.6');
-                break;
+        if( $swiper_version !== '0'){
+            switch ($swiper_version) {
+                case '8.4.5':
+                    wp_register_style('swiper', PXL_URL . 'assets/js/libs/swiper/v8/css/swiper.min.css', [], '8.4.5');
+                    wp_register_script('swiper', PXL_URL . 'assets/js/libs/swiper/v8/swiper.min.js', [], '8.4.5');
+                    break;
+                case '10.3.0':
+                    wp_register_style('swiper', PXL_URL . 'assets/js/libs/swiper/v10/css/swiper.min.css', [], '10.3.0');
+                    wp_register_script('swiper', PXL_URL . 'assets/js/libs/swiper/v10/swiper.min.js', [], '10.3.0');
+                    break;
+                case '11.0.6':
+                    wp_register_style('swiper', PXL_URL . 'assets/js/libs/swiper/v11/css/swiper.min.css', [], '11.0.6');
+                    wp_register_script('swiper', PXL_URL . 'assets/js/libs/swiper/v11/swiper.min.js', [], '11.0.6');
+                    break;
+                case '12.1.0':
+                    wp_register_style('swiper', PXL_URL . 'assets/js/libs/swiper/v12/css/swiper.min.css', [], '12.1.0');
+                    wp_register_script('swiper', PXL_URL . 'assets/js/libs/swiper/v12/swiper.min.js', [], '12.1.0');
+                    break;
+                default:
+                    wp_register_style('swiper', PXL_URL . 'assets/js/libs/swiper/css/swiper.min.css', [], '5.3.6');
+                    wp_register_script('swiper', PXL_URL . 'assets/js/libs/swiper/swiper.min.js', [], '5.3.6');
+                    break;
+            }
         }
     }
   

@@ -17,6 +17,7 @@ if(!function_exists('pxl_add_custom_widget')){
             $result = pxl_create_class_widget($file_path, $class_name, $name, $title, $icon, $categories, $params, $styles, $scripts);
         }
         require_once( $file_path );
+        
         if($result && class_exists($class_name)){
             \Elementor\Plugin::instance()->widgets_manager->register( new $class_name() );
         }

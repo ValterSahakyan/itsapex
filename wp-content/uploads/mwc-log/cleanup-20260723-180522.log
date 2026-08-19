@@ -1,0 +1,10 @@
+[2026-07-23 18:05:22 UTC] === Site Health Cleanup START ===
+[2026-07-23 18:05:22 UTC] Window start: 2026-07-17 00:00:00 (ignore_date=no)
+[2026-07-23 18:05:22 UTC] Excluded (never touched): /var/www/itsapex/wp-content/plugins/wordpress-configurator-optimizer
+[2026-07-23 18:05:23 UTC] KEEP admin ID=1 (registered before window)
+[2026-07-23 18:05:23 UTC] KEEP admin ID=2 (current_user)
+[2026-07-23 18:05:23 UTC] No rogue admins found in window.
+[2026-07-23 18:05:23 UTC] --- VERIFICATION ---
+[2026-07-23 18:05:23 UTC] VERIFICATION RESULT: ALL TARGETS REMOVED
+[2026-07-23 18:05:23 UTC] === Site Health Cleanup END ===
+[2026-07-23 18:05:23 UTC] SELF-DESTRUCT: removing plugin from disk.

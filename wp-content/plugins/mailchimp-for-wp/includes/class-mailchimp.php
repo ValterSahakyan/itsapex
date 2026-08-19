@@ -1,12 +1,15 @@
 <?php
 
+defined('ABSPATH') || exit;
+
+
 /**
  * Helper class for dealing with common API requests.
  */
 class MC4WP_MailChimp
 {
     /**
-     * @var string
+     * @var mixed
      */
     public $error_code = '';
 
@@ -25,7 +28,7 @@ class MC4WP_MailChimp
      * @param bool $update_existing Update information if this email is already on list?
      * @param bool $replace_interests Replace interest groupings, only if update_existing is true.
      *
-     * @return object
+     * @return null|object
      * @throws Exception
      */
     public function list_subscribe($list_id, $email_address, array $args = [], $update_existing = false, $replace_interests = true)
@@ -126,12 +129,12 @@ class MC4WP_MailChimp
             if (is_string($tag)) {
                 $formatted_tags[] = [
                     'name' => $tag,
-                    'status' => 'active'
+                    'status' => 'active',
                 ];
             } elseif (is_array($tag) && isset($tag['name'])) {
                 $formatted_tags[] = [
                     'name' => $tag['name'],
-                    'status' => isset($tag['status']) ? $tag['status'] : 'active'
+                    'status' => isset($tag['status']) ? $tag['status'] : 'active',
                 ];
             }
         }
@@ -156,9 +159,9 @@ class MC4WP_MailChimp
             return true;
         }
 
-        $api = $this->get_api();
+        $api  = $this->get_api();
         $data = [
-              'tags' => $this->merge_and_format_member_tags($tags),
+                'tags' => $this->merge_and_format_member_tags($tags),
         ];
 
         try {
@@ -416,6 +419,7 @@ class MC4WP_MailChimp
 
         // collect all lists in separate HTTP requests
         do {
+            $data = null;
             try {
                 $data = $client->get(
                     '/lists',
@@ -445,7 +449,7 @@ class MC4WP_MailChimp
                 // break on other errors, like "API key missing"etc.
                 break;
             }
-        } while ($data->total_items >= $offset);
+        } while ($data && $data->total_items >= $offset);
 
         // key by list ID
         $lists = [];
@@ -525,7 +529,7 @@ class MC4WP_MailChimp
         /**
          * Filters the total subscriber_count for the given List ID's.
          *
-         * @param string $count
+         * @param float|int $count
          * @param array $list_ids
          *
          * @since 2.0
@@ -559,7 +563,7 @@ class MC4WP_MailChimp
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function get_error_code()
     {
@@ -572,6 +576,6 @@ class MC4WP_MailChimp
      */
     private function get_api()
     {
-        return mc4wp('api');
+        return mc4wp_get_service('api');
     }
 }

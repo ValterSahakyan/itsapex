@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit; ?>
+
 <h2><?php echo esc_html__('Form Settings', 'mailchimp-for-wp'); ?></h2>
 
 <div class="mc4wp-margin-m"></div>
@@ -14,7 +16,12 @@
         // loop through lists
         if (empty($lists)) {
             ?>
-            <td colspan="2"><?php echo sprintf(wp_kses(__('No audiences found, <a href="%s">are you connected to Mailchimp</a>?', 'mailchimp-for-wp'), [ 'a' => [ 'href' => [] ] ]), admin_url('admin.php?page=mailchimp-for-wp')); ?></td>
+            <td colspan="2">
+            <?php
+                // translators: %s is the URL to the Mailchimp for WordPress settings page.
+                printf(wp_kses(__('No audiences found, <a href="%s">are you connected to Mailchimp</a>?', 'mailchimp-for-wp'), [ 'a' => [ 'href' => [] ] ]), esc_url(admin_url('admin.php?page=mailchimp-for-wp')));
+            ?>
+            </td>
             <?php
         } else {
             ?>
@@ -89,7 +96,7 @@
             </label>
             <p class="description">
                 <?php echo esc_html__('Select "no" if you want to add the selected interests to any previously selected interests when updating a subscriber.', 'mailchimp-for-wp'); ?>
-                <?php echo sprintf(' <a href="%s" target="_blank">' . esc_html__('What does this do?', 'mailchimp-for-wp') . '</a>', 'https://www.mc4wp.com/kb/what-does-replace-groupings-mean/#utm_source=wp-plugin&utm_medium=mailchimp-for-wp&utm_campaign=settings-page'); ?>
+                <?php printf(' <a href="%s" target="_blank">' . esc_html__('What does this do?', 'mailchimp-for-wp') . '</a>', 'https://www.mc4wp.com/kb/what-does-replace-groupings-mean/#utm_source=wp-plugin&utm_medium=mailchimp-for-wp&utm_campaign=settings-page'); ?>
             </p>
         </td>
     </tr>
@@ -164,7 +171,8 @@
     <tr valign="top">
         <th scope="row"><label for="mc4wp_form_redirect"><?php echo esc_html__('Redirect to URL after successful sign-ups', 'mailchimp-for-wp'); ?></label></th>
         <td>
-            <input type="text" class="widefat" name="mc4wp_form[settings][redirect]" id="mc4wp_form_redirect" placeholder="<?php echo sprintf(esc_attr__('Example: %s', 'mailchimp-for-wp'), esc_attr(site_url('/thank-you/'))); ?>" value="<?php echo esc_attr($opts['redirect']); ?>" />
+            <?php // translators: %s is an example URL, e.g. https://example.com/thank-you/. ?>
+            <input type="text" class="widefat" name="mc4wp_form[settings][redirect]" id="mc4wp_form_redirect" placeholder="<?php printf(esc_attr__('Example: %s', 'mailchimp-for-wp'), esc_attr(site_url('/thank-you/'))); ?>" value="<?php echo esc_attr($opts['redirect']); ?>" />
             <p class="description">
                 <?php echo wp_kses(__('Leave empty or enter <code>0</code> for no redirect. Otherwise, use complete (absolute) URLs, including <code>http://</code>.', 'mailchimp-for-wp'), [ 'code' => [] ]); ?>
             </p>

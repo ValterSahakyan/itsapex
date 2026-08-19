@@ -16,7 +16,7 @@ class PXL_Mega_Menu_Edit_Walker extends Walker_Nav_Menu_Edit
 
     function __construct()
     {
-
+ 
         $this->megamenus = get_posts(array(
             'post_type' => 'pxl-template',
             'posts_per_page' => '-1',
@@ -78,7 +78,7 @@ class PXL_Mega_Menu_Edit_Walker extends Walker_Nav_Menu_Edit
         $enable_megamenu = apply_filters('pxl_enable_megamenu', false);
         $enable_pagepopup = apply_filters('pxl_enable_pagepopup', false);
         $enable_ongpage_option = apply_filters('pxl_enable_onepage', true);
-        $enable_menu_icons = apply_filters('pxl_enable_menu_icons', true);
+        $enable_menu_icons = apply_filters('pxl_enable_menu_icons', true); 
         $this->mega_locations = apply_filters('pxl_locations', array('primary'));
         $check_mega = true;
         $nav_menu_selected_id = isset($_REQUEST['menu']) ? (int)$_REQUEST['menu'] : intval(get_user_option('nav_menu_recently_edited'));
@@ -125,7 +125,21 @@ class PXL_Mega_Menu_Edit_Walker extends Walker_Nav_Menu_Edit
             </label>
         </p>
     <?php endif; ?>
-
+    <p class="description description-wide menu-item-pxl-svg-icon">
+        <label><?php esc_html_e( 'Menu SVG Icon', PXL_TEXT_DOMAIN ); ?></label>
+        <span class="pxl-svg-preview">
+            <?php
+            $svg_id = get_post_meta( $item_id, '_menu_item_pxl_svg', true );
+            if ( $svg_id ) {
+                echo file_get_contents( get_attached_file( $svg_id ) );
+            }
+            ?>
+        </span>
+        <input type="hidden" class="pxl-menu-svg-id" name="menu-item-pxl-svg[<?php echo esc_attr( $item_id ); ?>]" value="<?php echo esc_attr( $svg_id ); ?>" />
+        <button class="button pxl-upload-svg"><?php esc_html_e( 'Upload SVG', PXL_TEXT_DOMAIN ); ?></button>
+        <button class="button pxl-remove-svg <?php echo get_post_meta( $item_id, '_menu_item_pxl_svg', true ) ? '' : 'hidden'; ?>"><?php esc_html_e( 'Remove', PXL_TEXT_DOMAIN ); ?></button>
+        
+    </p>
     <?php if ($enable_menu_icons): ?>
         <p class="description description-wide">
             <label for="edit-menu-item-pxl-icon-<?php echo esc_attr($item_id); ?>">
@@ -134,7 +148,7 @@ class PXL_Mega_Menu_Edit_Walker extends Walker_Nav_Menu_Edit
                         class="widefat pxl-icon-picker"
                         name="menu-item-pxl-icon[<?php echo esc_attr($item_id); ?>]">
                     <option value="" <?php selected('', esc_attr($item->pxl_icon)) ?>><?php esc_html_e('No Icons', PXL_TEXT_DOMAIN) ?></option>
-                    <?php $arr = $this->pxl_iconpicker_fontawesome();
+                    <?php $arr = $this->pxl_iconpicker_fontawesome(); 
                     foreach ($arr as $group => $icons) { ?>
                         <optgroup label="<?php echo esc_attr($group); ?>">
                             <?php foreach ($icons as $key => $label) {
@@ -210,35 +224,59 @@ class PXL_Mega_Menu_Edit_Walker extends Walker_Nav_Menu_Edit
         global $wp_filesystem;
         $icons = array();
         if ( defined( 'ELEMENTOR_VERSION' ) && is_callable( 'Elementor\Plugin::instance' ) ) {
+     
+            /*$initial_tabs = [
+                'fa-regular' => [
+                    'name' => 'fa-regular',
+                    'label' => esc_html__( 'Font Awesome - Regular', PXL_TEXT_DOMAIN ),
+                    'url' => ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/regular.min.css',
+                    'enqueue' => [ ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/fontawesome.min.css' ],
+                    'prefix' => 'fa-',
+                    'displayPrefix' => 'far',
+                    'labelIcon' => 'fab fa-font-awesome-alt',
+                    'ver' => '5.15.3',
+                    'fetchJson' => ELEMENTOR_ASSETS_PATH . 'lib/font-awesome/js/regular.js',
+                    'native' => true,
+                ],
+                'fa-solid' => [
+                    'name' => 'fa-solid',
+                    'label' => esc_html__( 'Font Awesome - Solid', PXL_TEXT_DOMAIN ),
+                    'url' => ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/solid.min.css',
+                    'enqueue' => [ ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/fontawesome.min.css' ],
+                    'prefix' => 'fa-',
+                    'displayPrefix' => 'fas',
+                    'labelIcon' => 'fab fa-font-awesome',
+                    'ver' => '5.15.3',
+                    'fetchJson' => ELEMENTOR_ASSETS_PATH . 'lib/font-awesome/js/solid.js',
+                    'native' => true,
+                ],
+                'fa-brands' => [
+                    'name' => 'fa-brands',
+                    'label' => esc_html__( 'Font Awesome - Brands', PXL_TEXT_DOMAIN ),
+                    'url' => ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/brands.min.css',
+                    'enqueue' => [ ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/fontawesome.min.css' ],
+                    'prefix' => 'fa-',
+                    'displayPrefix' => 'fab',
+                    'labelIcon' => 'fab fa-font-awesome-flag',
+                    'ver' => '5.15.3',
+                    'fetchJson' => ELEMENTOR_ASSETS_PATH . 'lib/font-awesome/js/brands.js',
+                    'native' => true,
+                ],
+            ];*/
             $icons_tabs = Icons_Manager::get_icon_manager_tabs();
-            $awesome_pro_support = apply_filters( 'pxl_support_awesome_pro', false );
+            //$icons_tabs = array_merge($icons_tabs, $initial_tabs);
+            
+            //$awesome_pro_support = apply_filters( 'pxl_support_awesome_pro', false );
+            
             $theme_url = get_template_directory_uri();
+
             foreach ($icons_tabs as $key => $value) {
-                if(!$awesome_pro_support){
-                    if(strpos($value['fetchJson'], 'regular.js') !== false )
-                        $value['fetchJson'] = ELEMENTOR_ASSETS_PATH . 'lib/font-awesome/js/regular.js';
-                    if(strpos($value['fetchJson'], 'solid.js') !== false )
-                        $value['fetchJson'] = ELEMENTOR_ASSETS_PATH . 'lib/font-awesome/js/solid.js';
-                    if(strpos($value['fetchJson'], 'brands.js') !== false )
-                        $value['fetchJson'] = ELEMENTOR_ASSETS_PATH . 'lib/font-awesome/js/brands.js';
-                }else{
-                    if(strpos($value['fetchJson'], 'solid-pro.js') !== false )
-                        $value['fetchJson'] = PXL_PATH . 'assets/libs/font-awesome-pro/solid-pro.js';
-                    if(strpos($value['fetchJson'], 'regular-pro.js') !== false )
-                        $value['fetchJson'] = PXL_PATH . 'assets/libs/font-awesome-pro/regular-pro.js';
-                    if(strpos($value['fetchJson'], 'brands-pro.js') !== false )
-                        $value['fetchJson'] = PXL_PATH . 'assets/libs/font-awesome-pro/brands-pro.js';
-                    if(strpos($value['fetchJson'], 'light-pro.js') !== false )
-                        $value['fetchJson'] = PXL_PATH . 'assets/libs/font-awesome-pro/light-pro.js';
-                    if(strpos($value['fetchJson'], 'duotone-pro.js') !== false )
-                        $value['fetchJson'] = PXL_PATH . 'assets/libs/font-awesome-pro/duotone-pro.js';
-                    if(strpos($value['fetchJson'], 'thin-pro.js') !== false )
-                        $value['fetchJson'] = PXL_PATH . 'assets/libs/font-awesome-pro/thin-pro.js';
-                }
+                
                 if(strpos($value['fetchJson'], $theme_url) !== false )
                     $value['fetchJson'] = str_replace($theme_url,get_template_directory(),$value['fetchJson']);
                  
-                $fetchJson = $value['fetchJson'] ;
+                $fetchJson = $value['fetchJson']; 
+               
                 $file_content = '';   
                 /*$opts = array(
                     'ssl'=>array(

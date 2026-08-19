@@ -36,6 +36,7 @@ class PXL_MegaMenu_Register
     {
 
         add_action('admin_enqueue_scripts', array($this, 'pxl_enqueue_style'),1);
+ 
         
         add_action('admin_init', array($this, 'pxl_admin_init'), 20);
 
@@ -68,6 +69,7 @@ class PXL_MegaMenu_Register
         $menu_item->pxl_megaprofile = get_post_meta($menu_item->ID, '_menu_item_pxl_megaprofile', true);
         $menu_item->pxl_page_popup = get_post_meta($menu_item->ID, '_menu_item_pxl_page_popup', true);
         $menu_item->pxl_icon = get_post_meta($menu_item->ID, '_menu_item_pxl_icon', true);
+        $menu_item->pxl_svg = get_post_meta($menu_item->ID, '_menu_item_pxl_svg', true);
         $menu_item->pxl_onepage = get_post_meta($menu_item->ID, '_menu_item_pxl_onepage', true);
         $menu_item->pxl_onepage_offset = get_post_meta($menu_item->ID, '_menu_item_pxl_onepage_offset', true);
         foreach ($this->menu_meta_extra as $key => $fields) {
@@ -91,6 +93,10 @@ class PXL_MegaMenu_Register
             update_post_meta($menu_item_db_id, '_menu_item_pxl_icon', $_REQUEST['menu-item-pxl-icon'][$menu_item_db_id]);
         }
 
+        if ( isset( $_POST['menu-item-pxl-svg'][ $menu_item_db_id ] ) ) {
+            update_post_meta($menu_item_db_id, '_menu_item_pxl_svg', intval( $_POST['menu-item-pxl-svg'][ $menu_item_db_id ] ));
+        }
+
         if (isset($_REQUEST['menu-item-pxl-onepage'][$menu_item_db_id])) {
             update_post_meta($menu_item_db_id, '_menu_item_pxl_onepage', $_REQUEST['menu-item-pxl-onepage'][$menu_item_db_id]);
         }
@@ -104,6 +110,7 @@ class PXL_MegaMenu_Register
                 update_post_meta($menu_item_db_id, '_menu_item_' . $key, $_REQUEST['menu-item-' . $key][$menu_item_db_id]);
             }
         }
+
     }
 
     // Custom Backend Walker - Edit
@@ -119,21 +126,36 @@ class PXL_MegaMenu_Register
     }
 
     function pxl_enqueue_style(){
-        $awesome_pro_support = apply_filters( 'pxl_support_awesome_pro', false );
-           
+        $screen = get_current_screen(); 
+        //$awesome_pro_support = apply_filters( 'pxl_support_awesome_pro', false );
+       
         wp_enqueue_style('jquery.fonticonpicker.min.css', PXL_URL . 'assets/libs/iconpicker/css/jquery.fonticonpicker.min.css', array(), 'all');
         wp_enqueue_style('jquery.fonticonpicker.grey.min.css', PXL_URL . 'assets/libs/iconpicker/themes/grey-theme/jquery.fonticonpicker.grey.min.css', array(), 'all');
         wp_enqueue_script('jquery.fonticonpicker.js', PXL_URL . 'assets/libs/iconpicker/jquery.fonticonpicker.min.js', array('jquery'));
        
-        if($awesome_pro_support){
+        /*if($awesome_pro_support){
             wp_enqueue_style( 'font-awesome-pro', PXL_URL . 'assets/libs/font-awesome-pro/css/all.min.css', [], '6.0.0-pro' );
-        }/*else{
+        }else{
             if ( defined( 'ELEMENTOR_VERSION' ) && is_callable( 'Elementor\Plugin::instance' ) ){
                 wp_enqueue_style('font-awesome', ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/all.min.css', [], '5.15.3' );
             } else {
                 wp_enqueue_style( 'font-awesome-pro', PXL_URL . 'assets/libs/font-awesome-pro/css/all.min.css', [], '6.0.0-pro' );
             }
         }*/
+ 
+
+
+        if ( $screen->id === 'nav-menus' ) {
+            wp_enqueue_media();
+            wp_enqueue_script(
+                'pxl-menu-svg',
+                PXL_URL . '/assets/js/menu-svg.js',
+                [ 'jquery' ],
+                '1.0',
+                true
+            );
+        }
+
     }
 
 
